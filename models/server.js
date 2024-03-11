@@ -1,6 +1,6 @@
-const express = requiere('express');
-const cors = requiere('cors');
-const { dbConnection } = reuiqere('../database/config');
+const express = require('express');
+const cors = require('cors');
+const { dbConnection } = require('../database/config');
 
 class Server{
     constructor() {

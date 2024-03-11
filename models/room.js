@@ -1,4 +1,4 @@
-const { Schema, model } = requiered('mongoose');
+const { Schema, model } = require('mongoose');
 
 const RoomSchema = Schema({
     number: {type: String, requiered:[true, 'El numero es obligatorio'],unique: true},
@@ -11,5 +11,11 @@ const RoomSchema = Schema({
     price: {type: Number, requiered:[true,'El precio es necesario']},
     reserved: {type: Boolean, default: false},
 });
+
+UsuarioSchema.method.toJSON = function () {
+    const { __v, _id, ...room } = this.toObjet();
+    room.uid = _id;
+    return room;
+}
 
 module.exports = model('Room', RoomSchema)
