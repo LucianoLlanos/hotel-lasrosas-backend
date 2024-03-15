@@ -4,13 +4,13 @@ const { dbConnection } = require('../database/config');
 
 class Server{
     constructor() {
-        thiss.app = express();
-        this.port = process.env.PROT;
+        this.app = express();
+        this.port = process.env.PORT;
         this.usuarioPath = '/api/usuarios'
         this.roomPath = '/api/room'
 
         //Conectar con base de datos
-        this.conectarDB();
+        // this.conectarDB();
 
         //Middlewares
         this.middlewares();
@@ -19,9 +19,9 @@ class Server{
         this.routes();
     }
 
-    async conectarDB() {
-        await dbConnection();
-    }
+    // async conectarDB() {
+    //     await dbConnection();
+    // }
 
     middlewares(){
         //CORS
