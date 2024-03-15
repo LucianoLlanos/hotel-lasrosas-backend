@@ -6,6 +6,7 @@ class Server{
     constructor() {
         thiss.app = express();
         this.port = process.env.PROT;
+        this.usuarioPath = '/api/usuarios'
 
         //Conectar con base de datos
         this.conectarDB();
@@ -34,6 +35,7 @@ class Server{
     }
 
     routes() {
+        this.app.use(this.usuarioPath, require('../routes/usuarios'));
     }
 
     listen() {
