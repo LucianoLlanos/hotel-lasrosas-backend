@@ -1,7 +1,7 @@
 const {response, request} = require('express')
 const Room = require('../models/room')
 
-const roomGet = async(req=request, res=response) => {
+const roomsGet = async(req=request, res=response) => {
     const datos = req.query;
     const query = {reserved: false}
 
@@ -28,6 +28,17 @@ const roomPost = async(req=request, res=response) => {
         mensaje: "Habitacion creada correctamente",
     })
 }
+
+const roomGet = async(req=request, res=response) => {
+    const {id} = req.params;
+
+    const room = await Room.findById(id);
+
+    res.json({
+        msg: 'Habitacion obtenida',
+        room,
+    })
+};
 
 const roomPut = async(req=request, res=response) => {
     const {id} = req.params;
@@ -66,6 +77,7 @@ const roomDelete = async(req=request, res=response) => {
 }
 
 module.exports = {
+    roomsGet,
     roomGet,
     roomPost,
     roomPut,
