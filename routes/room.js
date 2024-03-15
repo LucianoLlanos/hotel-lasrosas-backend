@@ -6,7 +6,7 @@ const router = Router();
 
 router.get('/', roomsGet);
 
-router.get('/', roomGet);
+router.get('/:id', roomGet);
 
 router.post('/', roomPost);
 

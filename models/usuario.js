@@ -8,4 +8,4 @@ const UsuarioSchema = Schema ({
     rol: {type: String, required: true}
 })
 
-module.exports=model('usuario',)
+module.exports = model('usuario',)

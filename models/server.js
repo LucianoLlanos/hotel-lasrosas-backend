@@ -35,7 +35,7 @@ class Server{
     }
 
     routes() {
-        this.app.use(this.roomPath, requiere('../routes/room'));
+        this.app.use(this.roomPath, require('../routes/room'));
     }
 
     listen() {
