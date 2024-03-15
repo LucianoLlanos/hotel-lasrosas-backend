@@ -12,7 +12,7 @@ const RoomSchema = Schema({
     reserved: {type: Boolean, default: false},
 });
 
-UsuarioSchema.method.toJSON = function () {
+RoomSchema.method.toJSON = function () {
     const { __v, _id, ...room } = this.toObjet();
     room.uid = _id;
     return room;
