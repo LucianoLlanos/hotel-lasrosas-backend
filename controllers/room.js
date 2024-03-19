@@ -15,13 +15,11 @@ const roomsGet = async(req=request, res=response) => {
 }
 
 const roomPost = async(req=request, res=response) => {
-    //Recibir el cuerpo de la peticion
     const datos = req.body;
     const { number, beds, bathroom, img1, img2, img3, sale, price } = datos;
     const room = new Room({number, beds, bathroom, img1, img2, img3, sale, price});
 
-    //Guardar los datos en BD
-    await usuario.save();
+    await room.save();
 
     res.json({
         room,
@@ -43,7 +41,6 @@ const roomGet = async(req=request, res=response) => {
 const roomPut = async(req=request, res=response) => {
     const {id} = req.params;
 
-    //Obtener datos para actualizar
     const {number, beds, bathroom, img1, img2, img3, sale, price, reserved, ...resto} = req.body;
 
     resto.number = number;
@@ -56,7 +53,6 @@ const roomPut = async(req=request, res=response) => {
     resto.price = price;
     resto.reserved = reserved;
     
-    //Buscar el usuario y actualizarlo
     const room = await Room.findByIdAndUpdate(id, resto,{new: true})
 
     res.json({
@@ -68,7 +64,6 @@ const roomPut = async(req=request, res=response) => {
 const roomDelete = async(req=request, res=response) => {
     const {id} = reqparams;
 
-    //Para eliminar el registro
     const RoomDeleted = await Room.findByIdAndDelete(id);
 
     res.jason({
