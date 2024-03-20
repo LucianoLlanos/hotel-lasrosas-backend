@@ -1,5 +1,5 @@
 const { Router } = require ('express');
-const { reservaPost, reservaGet, reservaPut, reservaDelete, reservasGet } = require('../controllers/reserva');
+const { reservaPost, reservaGet, reservaPut, reservaDelete, reservasGet } = require('../controllers/reservas');
 
 
 const router = Router();
