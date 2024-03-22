@@ -1,4 +1,12 @@
 const room = require('../models/room');
+const usuario = require ('../models/usuario');
+
+const mailExiste = async (mail) => {
+  const mailExiste = await usuario.findOne ({mail})
+  if (mailExiste)
+  throw new Error(` ya existe un usuario con el correo ${mail}`)
+}
+
 
 
 const roomNumberExiste = async (number) => {
@@ -10,5 +18,6 @@ const roomNumberExiste = async (number) => {
 
 
 module.exports = {
+    mailExiste,
     roomNumberExiste,
 }
