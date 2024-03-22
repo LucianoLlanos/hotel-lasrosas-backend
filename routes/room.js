@@ -1,6 +1,7 @@
 const { Router } = require ('express');
 const { roomPost, roomsGet, roomPut, roomDelete, roomGet } = require('../controllers/room');
-const { roomNumberExiste } = require('../helpers/db-validators')
+const { roomNumberExiste } = require('../helpers/db-validators');
+const { check } = require('express-validator');
 
 
 const router = Router();
