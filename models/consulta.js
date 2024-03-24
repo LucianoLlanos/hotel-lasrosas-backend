@@ -7,4 +7,4 @@ const ContultaSchema = Schema ({
     
 })
 
-module.exports = model('usuario', UsuarioSchema);
+module.exports = model('consulta', ConsultaSchema);
