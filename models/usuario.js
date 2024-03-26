@@ -8,4 +8,12 @@ const UsuarioSchema = Schema ({
     rol: {type: String, required: true}
 })
 
+// quitar datos extras de la respuesta JSON
+
+UsuarioSchema.methods.toJson = function (){
+    const{__v, _id, password, ...usuario} = this.toObjet();
+    usuario.uid = _id;
+    return usuario;
+}
+
 module.exports = model('usuario', UsuarioSchema);
