@@ -49,8 +49,8 @@ const consultaDelete = async(req=request, res=response) => {
 }
 
 module.exports = {
-    ConsultasGet,
-    ConsultaGet,
-    ConsultaPost,
-    ConsultaDelete,
+    consultasGet,
+    consultaGet,
+    consultaPost,
+    consultaDelete,
 }
