@@ -1,5 +1,6 @@
 const room = require('../models/room');
 const usuario = require ('../models/usuario');
+const consulta = require ('../models/consulta')
 
 const mailExiste = async (mail) => {
   const mailExiste = await usuario.findOne ({mail})
@@ -16,8 +17,15 @@ const roomNumberExiste = async (number) => {
     }
 }
 
+const consultaExiste = async (id) => {
+    const consultaExiste = await consulta.findById(id);
+    if(!consultaExiste) {
+        throw new Error(`La consulta con el id ${id} no se encuantra en la base de datos`);
+    }
+}
 
 module.exports = {
     mailExiste,
     roomNumberExiste,
+    consultaExiste,
 }
