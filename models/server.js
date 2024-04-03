@@ -10,6 +10,7 @@ class Server{
         this.roomPath = '/api/room'
         this.reservasPath = '/api/reservas'
         this.authPath = 'api/auth'
+        this.consultaPath = 'api/consultas'
 
         //Conectar con base de datos
         // this.conectarDB();
@@ -42,6 +43,7 @@ class Server{
         this.app.use(this.roomPath, require('../routes/room'));
         this.app.use(this.reservasPath, require('../routes/reservas'));
         this.app.use(this.authPath, require('../routes/auth'))
+        this.app.use(this.consultaPath, require('../routes/consultas'))
     }
 
     listen() {
