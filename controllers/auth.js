@@ -11,14 +11,12 @@ const login = async (req= request, res=response) => {
     try {
         const usuario = await usuario.fintOne ({mail});
 
- //verificar si el correo existe en la BD
  if (!usuario) {
     return res.status(400).json({
         msg: 'correo o password incorrecto'
     })
  }
 
- //verificar si el usuario esta activo
  if(!usuario.estado){
     return res.status(400).json({
         smg: 'correo o password incorrecto'
@@ -26,7 +24,6 @@ const login = async (req= request, res=response) => {
  }
 
 
- // verificar la contraseña 
  const validPassword = bcrypt.compareSync(password, usuario.password);
  if (!validPassword){
     return res.status(400).json({
@@ -36,7 +33,6 @@ const login = async (req= request, res=response) => {
 
 
 
- // generar el token
 
  const token = await generarJWT (usuario.id);
 

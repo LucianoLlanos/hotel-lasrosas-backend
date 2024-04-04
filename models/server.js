@@ -12,28 +12,22 @@ class Server{
         this.authPath = 'api/auth'
         this.consultaPath = 'api/consultas'
 
-        //Conectar con base de datos
-        // this.conectarDB();
+        this.conectarDB();
 
-        //Middlewares
         this.middlewares();
 
-        //Funciones para las rutas
         this.routes();
     }
 
-    // async conectarDB() {
-    //     await dbConnection();
-    // }
+    async conectarDB() {
+        await dbConnection();
+    }
 
     middlewares(){
-        //CORS
         this.app.use(cors());
 
-        //Leer lo q envia el usuario por el cuerpo de la peticion
         this.app.use(express.json());
 
-        //Definir carpeta publica
         this.app.use(express.static('public'));
 
     }

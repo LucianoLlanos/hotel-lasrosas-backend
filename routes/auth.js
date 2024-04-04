@@ -1,9 +1,9 @@
-const {Ruter} = require ('express')
+const {Router} = require ('express')
 const {check}= require ('express-validator')
-const {validarCampos} = require ()
+const {validarCampos} = require ('../middlewares/validarCampos')
 const {login} = require ('../controllers/auth')
 
-const router = router ();
+const router = Router ();
 
 router.post('/login',
  [
