@@ -9,7 +9,6 @@ const mailExiste = async (mail) => {
 }
 
 
-
 const roomNumberExiste = async (number) => {
     const existeRoom = await room.findOne({number})
     if(existeRoom) {
