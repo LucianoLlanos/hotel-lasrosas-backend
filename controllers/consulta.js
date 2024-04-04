@@ -1,5 +1,5 @@
 const {response, request} = require('express')
-const Consulta = require('../models/consulta') 
+const Consulta = require('../models/consulta')
 
 const consultasGet = async(req=request, res=response) => {
     const datos = req.query;
@@ -26,8 +26,8 @@ const consultaGet = async(req=request, res=response) => {
 
 const consultaPost = async(req=request, res=response) => {
     const datos = req.body;
-    const {mail, consultas, telefono} = datos;
-    const consulta = new Consulta({mail, consulta, telefono});
+    const {mail, consultaTexto, telefono} = datos;
+    const consulta = new Consulta({mail, consultaTexto, telefono});
 
 
     await consulta.save();
