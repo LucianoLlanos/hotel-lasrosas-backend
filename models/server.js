@@ -9,29 +9,25 @@ class Server{
         this.usuarioPath = '/api/usuarios'
         this.roomPath = '/api/room'
         this.reservasPath = '/api/reservas'
+        this.authPath = 'api/auth'
+        this.consultaPath = 'api/consultas'
 
-        //Conectar con base de datos
-        // this.conectarDB();
+        this.conectarDB();
 
-        //Middlewares
         this.middlewares();
 
-        //Funciones para las rutas
         this.routes();
     }
 
-    // async conectarDB() {
-    //     await dbConnection();
-    // }
+    async conectarDB() {
+        await dbConnection();
+    }
 
     middlewares(){
-        //CORS
         this.app.use(cors());
 
-        //Leer lo q envia el usuario por el cuerpo de la peticion
         this.app.use(express.json());
 
-        //Definir carpeta publica
         this.app.use(express.static('public'));
 
     }
@@ -40,6 +36,8 @@ class Server{
         this.app.use(this.usuarioPath, require('../routes/usuarios'));
         this.app.use(this.roomPath, require('../routes/room'));
         this.app.use(this.reservasPath, require('../routes/reservas'));
+        this.app.use(this.authPath, require('../routes/auth'))
+        this.app.use(this.consultaPath, require('../routes/consultas'))
     }
 
     listen() {

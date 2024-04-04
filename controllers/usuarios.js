@@ -1,9 +1,11 @@
-const { response, request, query} = require ('express');
+const { response, request} = require ('express');
 const usuario = require('../models/usuario');
 let bcrypt = require ('bcryptjs')
 
-const usuariosGet = async( req=request, res=response) => {const datos= req=query;
+const usuariosGet = async( req=request, res=response) => {
+const datos= req=query;
 const query = {estado: true}
+
 const [total, usuarios] = await Promise.all([usuario.countDocuments(query), usuario.find (query)])
 res.json({
     mensaje: "usuarios obtenidos",
