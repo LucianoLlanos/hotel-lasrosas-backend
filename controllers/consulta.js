@@ -1,16 +1,20 @@
 const {response, request} = require('express')
 const Consulta = require('../models/consulta')
 
-const consultasGet = async(req=request, res=response) => {
-    const datos = req.query;
-    
-    const [ total, consultas ] = await Promise.all([Consulta.countDocuments(query), Consulta.find(query)]);
+const consultasGet = async (req = request, res = response) => {
+    try {
+        const consultas = await Consulta.find();
 
-    res.json({
-        mensaje: "Consultas obtenidas",
-        total,
-        consultas
-    })
+        res.json({
+            mensaje: "Todas las consultas obtenidas",
+            total: consultas.length,
+            consultas
+        });
+        
+    } catch (error) {
+        console.error("Error al obtener todas las consultas:", error);
+        res.status(500).json({ mensaje: "Error al obtener las consultas" });
+    }
 }
 
 const consultaGet = async(req=request, res=response) => {
