@@ -3,10 +3,11 @@ const usuario = require('../models/usuario');
 let bcrypt = require ('bcryptjs')
 
 const usuariosGet = async( req=request, res=response) => {
-const datos= req=query;
+const datos = req.query;
 const query = {estado: true}
 
 const [total, usuarios] = await Promise.all([usuario.countDocuments(query), usuario.find (query)])
+
 res.json({
     mensaje: "usuarios obtenidos",
     total,
@@ -14,9 +15,8 @@ res.json({
 })
 }
 //recibir el cuerpo de la peticion 
-const usuarioPost = async(
-    req=request, res=response) => {
-        const datos = require.body;
+const usuarioPost = async(req=request, res=response) => {
+        const datos = req.body;
         const {name, mail, password, rol} = datos;
         const usuario = new usuario ({name, mail, password, rol});
 
@@ -30,14 +30,14 @@ const usuarioPost = async(
         //guardar los datos en la BD
         await usuario.save();
 
-        res.json({
+    res.json({
         usuario,
         mensaje: "usuario creado correctamente",
-    })
-    }
+        })
+}
 
 
-    const usuarioPut = async (req=request, res=response) => {
+const usuarioPut = async (req=request, res=response) => {
         const {id} = req.params
 
         // obtener los datos para actualizar 
@@ -51,20 +51,19 @@ const usuarioPost = async(
          usuario.password = hash;
        }
 
-        resto.mail = mail
+    resto.mail = mail
      
 
         //buscar el usuario y actualizarlo 
 
-        const usuario = await usuario.findByIdAndUpdate(Id, resto, {new: true})
+    const usuario = await usuario.findByIdAndUpdate(id, resto, {new: true})
 
-        res.json ({
+    res.json ({
             mensaje: "usuario actualizado",
             usuario
         })
-
-    }
-     const usuarioDelete = async(req= require, res=response) =>{
+}
+const usuarioDelete = async(req= require, res=response) =>{
         const {id} = req.params;
      
 
@@ -82,11 +81,10 @@ const usuarioPost = async(
             mensaje: "usuario eliminado",
             usuarioInactivado
         })
-     
-    }
-    module.exports ={
-        usuariosGet,
-        usuarioPost,
-        usuarioPut,
-        usuarioDelete
-    }
+}
+module.exports ={
+    usuariosGet,
+    usuarioPost,
+    usuarioPut,
+    usuarioDelete
+}

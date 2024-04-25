@@ -9,8 +9,8 @@ class Server{
         this.usuarioPath = '/api/usuarios'
         this.roomPath = '/api/room'
         this.reservasPath = '/api/reservas'
-        this.authPath = 'api/auth'
-        this.consultaPath = 'api/consultas'
+        this.authPath = '/api/auth'
+        this.consultaPath = '/api/consultas'
 
         this.conectarDB();
 
